@@ -1,0 +1,411 @@
+<!-- COLOR PALETTE: Vibrant Tech (Indigo #4F46E5, Pink #EC4899, Emerald #34D399, Amber #FBBF24, Cyan #06B6D4) -->
+<!-- NO SVG / NO MERMAID JS CONFIRMATION: I explicitly confirm that neither SVG nor Mermaid JS were used anywhere in this output. All graphics rely on HTML/CSS/Unicode or HTML5 Canvas via Chart.js. -->
+<!-- NARRATIVE PLAN: 1. Hook (Impact Stats via Big Numbers/Donut). 2. Generational Gap (Parents vs Students via Grouped Bar). 3. Evolution of Trust (Timeline via Line Chart). 4. New Decision Funnel (HTML/CSS Flowchart). 5. Content Effectiveness (Scatter Plot). -->
+<!-- CHART SELECTION JUSTIFICATION:
+- Donut (Inform): Simple proportion of search channels.
+- Grouped Bar (Compare): Side-by-side comparison of student vs parent platform usage.
+- Line (Change): Showing trends in trust over 4 years.
+- HTML/CSS Flow (Organize): Step-by-step decision process (No SVG/Mermaid).
+- Scatter Plot (Relationships): Correlating content production cost with enrollment impact.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Ecosistema Digital Universitario 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; }
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 320px;
+    max-height: 400px;
+}
+@media (min-width: 768px) {
+    .chart-container { height: 380px; }
+}
+.flow-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #4F46E5;
+    margin: -10px 0;
+    z-index: 10;
+    position: relative;
+}
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<nav class="bg-indigo-600 text-white p-4 sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="font-bold text-xl tracking-tight">EduData LATAM 2026</h1>
+        <div class="hidden md:flex space-x-6 text-sm font-semibold">
+            <a href="#panorama" class="hover:text-pink-300 transition">&#9679; Panorama</a>
+            <a href="#brecha" class="hover:text-pink-300 transition">&#9679; Brecha Generacional</a>
+            <a href="#embudo" class="hover:text-pink-300 transition">&#9679; El Nuevo Embudo</a>
+            <a href="#impacto" class="hover:text-pink-300 transition">&#9679; Impacto del Contenido</a>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-white pt-16 pb-12 px-4 border-b-4 border-pink-500">
+    <div class="container mx-auto max-w-5xl text-center">
+        <span class="inline-block py-1 px-3 rounded-full bg-pink-100 text-pink-600 font-bold text-xs mb-4 uppercase tracking-wider">Reporte de Tendencias 2025/2026</span>
+        <h2 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">El Algoritmo de la <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500">Decisión Estudiantil</span></h2>
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            En Perú y Latinoamérica, la forma en que los futuros estudiantes y sus padres eligen una institución de educación superior ha cambiado drásticamente. Las páginas web estáticas han sido reemplazadas por la validación social en videos cortos, y la inteligencia artificial actúa como el nuevo orientador vocacional.
+        </p>
+    </div>
+</header>
+
+<main class="container mx-auto px-4 py-12 max-w-6xl space-y-20">
+
+    <section id="panorama">
+        <div class="mb-10 text-center md:text-left">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">El Nuevo Punto de Partida</h3>
+            <p class="text-gray-600 max-w-2xl">
+                La Generación Z (y la emergente Generación Alfa) ya no inicia su búsqueda en Google. Las plataformas visuales son el motor de descubrimiento primario para conocer la "verdadera" vida universitaria.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="bg-indigo-600 rounded-2xl shadow-xl p-8 text-white transform hover:-translate-y-1 transition duration-300">
+                <div class="text-6xl mb-4">&#128241;</div>
+                <h4 class="text-7xl font-extrabold mb-2">82%</h4>
+                <p class="text-xl font-medium text-indigo-100 mb-6">de los aspirantes confía más en un vlog de un estudiante en TikTok/Instagram que en un folleto oficial de la universidad.</p>
+                <div class="bg-indigo-800 bg-opacity-50 rounded-lg p-4 text-sm">
+                    <span class="font-bold text-amber-400">Dato Clave:</span> La hiper-autenticidad supera a la producción de alta calidad en la fase de descubrimiento.
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h4 class="text-xl font-bold text-gray-800 mb-2 text-center">Canal Primario de Búsqueda Inicial (2026)</h4>
+                <p class="text-sm text-gray-500 text-center mb-6">Dónde inician su investigación los estudiantes de 5to de secundaria.</p>
+                <div class="chart-container">
+                    <canvas id="donutChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="brecha">
+        <div class="mb-10 text-center md:text-left">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">La Brecha Generacional en la Toma de Decisiones</h3>
+            <p class="text-gray-600 max-w-3xl">
+                Mientras el estudiante busca "experiencia y comunidad" en redes efímeras, los padres (quienes usualmente financian la educación) buscan "empleabilidad y prestigio" en canales tradicionales y redes consolidadas.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <h4 class="text-xl font-bold text-gray-800 mb-6 text-center">Índice de Influencia por Plataforma: Estudiantes vs. Padres</h4>
+            <div class="chart-container md:max-w-4xl">
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h4 class="text-xl font-bold text-gray-800 mb-2 text-center">Evolución de la Confianza (2022 - 2026)</h4>
+            <p class="text-sm text-gray-500 text-center mb-6">El rápido ascenso de la IA como consultor vocacional frente a medios tradicionales.</p>
+            <div class="chart-container md:max-w-4xl">
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="embudo" class="bg-gray-100 -mx-4 px-4 py-16 rounded-3xl shadow-inner">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">El Embudo de Decisión Descentralizado</h3>
+                <p class="text-gray-600">
+                    El proceso ya no es lineal (Anuncio -> Web -> Matrícula). En 2026, el proceso es fragmentado, dominado por el contenido generado por el usuario (UGC) y validaciones de terceros antes de contactar a la institución.
+                </p>
+            </div>
+
+            <div class="flex flex-col items-center space-y-2">
+                
+                <div class="w-full bg-white border-l-8 border-pink-500 rounded-lg shadow-md p-6 flex items-center">
+                    <div class="text-4xl mr-6 bg-pink-100 p-3 rounded-full text-pink-600">&#128064;</div>
+                    <div>
+                        <h5 class="text-lg font-bold text-gray-800">1. Descubrimiento Algorítmico Pasivo</h5>
+                        <p class="text-sm text-gray-600 mt-1">El estudiante es impactado por un TikTok viral sobre el menú del comedor o un trend de estudiantes de cierta facultad, sin haber buscado la universidad activamente.</p>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">&#8595;</div>
+
+                <div class="w-full bg-white border-l-8 border-indigo-500 rounded-lg shadow-md p-6 flex items-center">
+                    <div class="text-4xl mr-6 bg-indigo-100 p-3 rounded-full text-indigo-600">&#128269;</div>
+                    <div>
+                        <h5 class="text-lg font-bold text-gray-800">2. Investigación No Oficial (Reddit / Discord)</h5>
+                        <p class="text-sm text-gray-600 mt-1">Buscan foros anónimos para preguntar: "¿Qué tan difícil es conseguir prácticas estudiando ahí?" Buscan la realidad sin filtros de marketing.</p>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">&#8595;</div>
+
+                <div class="w-full bg-white border-l-8 border-amber-400 rounded-lg shadow-md p-6 flex items-center">
+                    <div class="text-4xl mr-6 bg-amber-100 p-3 rounded-full text-amber-600">&#128104;&#8205;&#128187;</div>
+                    <div>
+                        <h5 class="text-lg font-bold text-gray-800">3. Auditoría de Prestigio (Padres & LinkedIn)</h5>
+                        <p class="text-sm text-gray-600 mt-1">Los padres validan la inversión buscando a egresados en LinkedIn, revisando rankings en portales web y pidiendo referencias en grupos cerrados de Facebook o WhatsApp.</p>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">&#8595;</div>
+
+                <div class="w-full bg-white border-l-8 border-emerald-400 rounded-lg shadow-md p-6 flex items-center">
+                    <div class="text-4xl mr-6 bg-emerald-100 p-3 rounded-full text-emerald-600">&#128222;</div>
+                    <div>
+                        <h5 class="text-lg font-bold text-gray-800">4. Interacción con Plataformas de IA</h5>
+                        <p class="text-sm text-gray-600 mt-1">El estudiante usa ChatGPT o el bot de la universidad para hacer preguntas hiper-específicas sobre convalidación de cursos o simuladores de cuotas antes de dejar sus datos.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="impacto">
+        <div class="mb-10 text-center md:text-left">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">Eficiencia del Contenido: Costo vs. Impacto Real</h3>
+            <p class="text-gray-600 max-w-3xl">
+                Las instituciones gastan miles en producciones de video tradicionales, pero los datos muestran que el contenido de bajo presupuesto (auténtico y crudo) genera una mayor tasa de interés genuino y conversión a matrícula.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+            <div class="chart-container md:max-w-3xl">
+                <canvas id="scatterChart"></canvas>
+            </div>
+            <div class="mt-6 grid grid-cols-2 gap-4 text-center text-sm border-t pt-6 border-gray-100">
+                <div>
+                    <span class="block font-bold text-pink-500 text-lg mb-1">Zona Óptima</span>
+                    <span class="text-gray-600">Bajo costo de producción, alto impacto en decisiones (Ej. Vlogs diarios, Q&A sin guion).</span>
+                </div>
+                <div>
+                    <span class="block font-bold text-gray-400 text-lg mb-1">Zona de Desgaste</span>
+                    <span class="text-gray-600">Alto costo, bajo impacto (Ej. Comerciales de TV genéricos, videos institucionales de 5 minutos).</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-gray-900 text-gray-400 py-8 mt-12 text-center text-sm">
+    <div class="container mx-auto px-4">
+        <p class="font-bold text-white mb-2">EduData LATAM Visualizer &copy; 2026</p>
+        <p>Datos simulados basados en proyecciones de tendencias de adopción digital y comportamiento de la Generación Z en educación superior en la región andina y Latinoamérica.</p>
+    </div>
+</footer>
+
+<script>
+const formatLabel = (label) => {
+    if (label.length <= 16) return label;
+    const words = label.split(' ');
+    let lines = [];
+    let currentLine = '';
+    words.forEach(word => {
+        if ((currentLine + word).length > 16) {
+            if (currentLine) lines.push(currentLine.trim());
+            currentLine = word + ' ';
+        } else {
+            currentLine += word + ' ';
+        }
+    });
+    if (currentLine) lines.push(currentLine.trim());
+    return lines;
+};
+
+const commonTooltip = {
+    callbacks: {
+        title: function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        }
+    }
+};
+
+const donutCtx = document.getElementById('donutChart').getContext('2d');
+new Chart(donutCtx, {
+    type: 'doughnut',
+    data: {
+        labels: [
+            "Redes Visuales (TikTok/IG)", 
+            "Buscadores (Google/Bing)", 
+            "YouTube & Video Largo", 
+            "Portales Oficiales Directos", 
+            "IA Conversacional"
+        ].map(formatLabel),
+        datasets: [{
+            data: [45, 20, 15, 10, 10],
+            backgroundColor: ['#EC4899', '#4F46E5', '#FBBF24', '#34D399', '#06B6D4'],
+            borderWidth: 2,
+            borderColor: '#ffffff'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { position: 'right', labels: { font: { family: 'Inter', size: 12 } } },
+            tooltip: commonTooltip
+        },
+        cutout: '70%'
+    }
+});
+
+const barCtx = document.getElementById('barChart').getContext('2d');
+new Chart(barCtx, {
+    type: 'bar',
+    data: {
+        labels: [
+            "TikTok e Instagram Reels", 
+            "Grupos de Facebook y WhatsApp", 
+            "Búsquedas en Google Clásico", 
+            "Portales Web Oficiales Universitarios", 
+            "LinkedIn y Redes Profesionales",
+            "Asistentes de IA (ChatGPT/Claude)"
+        ].map(formatLabel),
+        datasets: [
+            {
+                label: 'Estudiantes (Postulantes)',
+                data: [92, 15, 60, 45, 20, 75],
+                backgroundColor: '#EC4899',
+                borderRadius: 4
+            },
+            {
+                label: 'Padres (Apoderados)',
+                data: [25, 85, 90, 80, 65, 30],
+                backgroundColor: '#4F46E5',
+                borderRadius: 4
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { position: 'top', labels: { font: { family: 'Inter' } } },
+            tooltip: commonTooltip
+        },
+        scales: {
+            y: { beginAtZero: true, max: 100, title: { display: true, text: 'Nivel de Influencia (%)', font: {family:'Inter'} } },
+            x: { ticks: { font: { family: 'Inter', size: 11 } } }
+        }
+    }
+});
+
+const lineCtx = document.getElementById('lineChart').getContext('2d');
+new Chart(lineCtx, {
+    type: 'line',
+    data: {
+        labels: ['2022', '2023', '2024', '2025', '2026'],
+        datasets: [
+            {
+                label: 'Búsqueda Tradicional (Google/Webs)',
+                data: [85, 78, 65, 55, 48],
+                borderColor: '#4F46E5',
+                backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                tension: 0.4,
+                fill: true,
+                borderWidth: 3
+            },
+            {
+                label: 'Redes Sociales de Video Corto',
+                data: [40, 55, 75, 88, 92],
+                borderColor: '#EC4899',
+                backgroundColor: 'transparent',
+                tension: 0.4,
+                borderWidth: 3
+            },
+            {
+                label: 'Consultas a IA Generativa',
+                data: [5, 15, 35, 60, 80],
+                borderColor: '#06B6D4',
+                backgroundColor: 'transparent',
+                tension: 0.4,
+                borderWidth: 3,
+                borderDash: [5, 5]
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { position: 'bottom', labels: { font: { family: 'Inter' } } },
+            tooltip: commonTooltip
+        },
+        scales: {
+            y: { beginAtZero: true, max: 100, title: { display: true, text: 'Índice de Uso Diario', font: {family:'Inter'} } },
+            x: { grid: { display: false } }
+        }
+    }
+});
+
+const scatterCtx = document.getElementById('scatterChart').getContext('2d');
+new Chart(scatterCtx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+            label: 'Formatos de Contenido Educativo',
+            data: [
+                {x: 15, y: 90, format: 'Vlog "Un día en mi vida" (Alumno)'},
+                {x: 10, y: 85, format: 'Respuesta rápida en TikTok (Q&A)'},
+                {x: 30, y: 70, format: 'Tour por la cafetería/dormitorios'},
+                {x: 80, y: 40, format: 'Video Institucional (Actorado)'},
+                {x: 95, y: 25, format: 'Comercial de TV Tradicional'},
+                {x: 60, y: 55, format: 'Webinar de 2 horas con Decanos'},
+                {x: 25, y: 75, format: 'Infografía de Empleabilidad (Carrusel IG)'},
+                {x: 5,  y: 65, format: 'Meme sobre la vida universitaria'},
+                {x: 70, y: 60, format: 'Tour Virtual 360 Interactvo'}
+            ],
+            backgroundColor: '#34D399',
+            borderColor: '#047857',
+            borderWidth: 1,
+            pointRadius: 8,
+            pointHoverRadius: 10
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return context.raw.format + ' (Costo: ' + context.raw.x + ', Impacto: ' + context.raw.y + ')';
+                    }
+                }
+            }
+        },
+        scales: {
+            x: { 
+                title: { display: true, text: 'Costo de Producción Relativo (Bajo 0 -> Alto 100)', font: {family:'Inter', weight:'bold'} },
+                min: 0, max: 100
+            },
+            y: { 
+                title: { display: true, text: 'Impacto Real en Intención de Matrícula (0-100)', font: {family:'Inter', weight:'bold'} },
+                min: 0, max: 100
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>
